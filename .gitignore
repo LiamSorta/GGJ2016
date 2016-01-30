@@ -60,3 +60,5 @@ ehthumbs.db
 Thumbs.db
 *.unity
 *.unity
+*.txt
+*.asset
