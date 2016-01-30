@@ -17,19 +17,31 @@ public class PlayerScript : MonoBehaviour {
 
     public float health { get { return _health; } }
 
+    Rigidbody2D rigidbody;
+
 
 	// Use this for initialization
 	void Start () {
-	
+        rigidbody = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
         HpRegen();
+        Movement();
 	}
 
     private void HpRegen()
     {
         _health += hpRegenModifier * Time.deltaTime;
     }
+
+    private void Movement()
+    {
+        rigidbody.velocity = Vector2.zero;
+        Vector2 movement= new Vector2(Input.GetAxisRaw("Horizontal") * speedModifier * Time.deltaTime, Input.GetAxisRaw("Vertical") * speedModifier * Time.deltaTime);
+        rigidbody.velocity = movement;
+    }
+
+
 }
