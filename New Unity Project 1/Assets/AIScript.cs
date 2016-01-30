@@ -12,7 +12,6 @@ public class AIScript : MonoBehaviour {
     private float dmg = 3;    
     private float moveSpeed = 3;
     private float health = 100;
-    private Color Colour;
     private float attackSpeed = 0.5f;
 
     public float dmgMod;
@@ -23,6 +22,9 @@ public class AIScript : MonoBehaviour {
     float distance;
     float a;
     float Z;
+    float visionRadius;
+
+    bool canGoInvis;
 
     void Start()
     {
@@ -30,7 +32,10 @@ public class AIScript : MonoBehaviour {
         target = go.transform;
 
         rend = GetComponent<SpriteRenderer>();
-        rend.enabled = true;
+        if (canGoInvis)
+        {
+            rend.enabled = true;
+        }
  
     }	
 
@@ -39,10 +44,12 @@ public class AIScript : MonoBehaviour {
         //SetStats();
         
         distance = Vector2.Distance(transform.position, target.position);
-        if (distance > 3)
+        if (distance > visionRadius)
         {
-
-            rend.enabled = false;
+            if (canGoInvis)
+            {
+                rend.enabled = false;
+            }
             
             a += Time.deltaTime;
 
@@ -78,8 +85,10 @@ public class AIScript : MonoBehaviour {
         }
         else
         {
-            
-            rend.enabled = true;
+            if (canGoInvis)
+            {
+                rend.enabled = true;
+            }
             Quaternion Enemyrot = Quaternion.LookRotation(transform.position - target.position, Vector3.forward);
             transform.rotation = Enemyrot;
             transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
@@ -94,13 +103,15 @@ public class AIScript : MonoBehaviour {
         health = health - (damage * armourMod); 
     }
     
-    public void SetStats(float idmgMod, float iattackSpeedMod, float iarmourMod, float imoveSpeedMod, Color icolour)    
+    public void SetStats(float idmgMod, float iattackSpeedMod, float iarmourMod, float imoveSpeedMod, Color icolour,bool Invisible,float Radius)    
     {
         dmgMod =  idmgMod;
         attackSpeedMod = iattackSpeedMod;
         armourMod = iarmourMod;
         moveSpeedMod =  imoveSpeedMod;
-        Colour = icolour; 
+        GetComponent<SpriteRenderer>().color = icolour;
+        canGoInvis = Invisible;
+        visionRadius = Radius;
     }
 
     void OnTriggerStay2D(Collider2D Elemental) 
@@ -112,6 +123,7 @@ public class AIScript : MonoBehaviour {
             if (Z > attackSpeed*attackSpeedMod)
             {
                 GetComponent<PlayerScript>().TakeDamage(dmg * dmgMod);
+                Z = 0;
             }
         }
     }
