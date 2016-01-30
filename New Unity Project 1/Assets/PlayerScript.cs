@@ -8,6 +8,8 @@ public class PlayerScript : MonoBehaviour {
     private float _armourModifier = 100;
     private float _hpRegenModifier = 5;
 
+    public bool freezeControls; //For Liam, cos he's weird
+
     private float _health;
 
     public float damageModifier { get { return _damageModifier; } set { _damageModifier = value; } }
@@ -38,9 +40,12 @@ public class PlayerScript : MonoBehaviour {
 
     private void Movement()
     {
-        rigidbody.velocity = Vector2.zero;
-        Vector2 movement= new Vector2(Input.GetAxisRaw("Horizontal") * speedModifier * Time.deltaTime, Input.GetAxisRaw("Vertical") * speedModifier * Time.deltaTime);
-        rigidbody.velocity = movement;
+        if (!freezeControls) //When freezeControls is true do not allow controls
+        {
+            rigidbody.velocity = Vector2.zero;
+            Vector2 movement = new Vector2(Input.GetAxisRaw("Horizontal") * speedModifier * Time.deltaTime, Input.GetAxisRaw("Vertical") * speedModifier * Time.deltaTime);
+            rigidbody.velocity = movement;
+        }
     }
 
 
