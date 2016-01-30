@@ -3,10 +3,10 @@ using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
 
-    private float _damageModifier = 5;
-    private float _speedModifier = 250;
-    private float _armourModifier = 100;
-    private float _hpRegenModifier = 5;
+    private float _damageModifier = 1;
+    private float _speedModifier = 1;
+    private float _armourModifier = 1;
+    private float _hpRegenModifier = 1;
 
     public bool freezeControls; //For Liam, cos he's weird
 
@@ -33,14 +33,14 @@ public class PlayerScript : MonoBehaviour {
 	
     void Update()
     {
-        GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        /*GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject e in allEnemies)
         {
             if (collider.IsTouching(e.GetComponent<Collider2D>())&&Input.GetButtonDown("Fire1"))
             {
                 //e.GetComponent<AIScript>().TakeDamage(damageModifier * _damage);
             }
-        }
+        }*/
     }
 
 	// Update is called once per frame
