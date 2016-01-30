@@ -49,6 +49,11 @@ public class PlayerScript : MonoBehaviour {
         Movement();
 	}
 
+    public void TakeDamage(float damage)
+    {
+        _health -= damage * armourModifier;
+    }
+
     private void HpRegen()
     {
         _health += hpRegenModifier * Time.deltaTime;
