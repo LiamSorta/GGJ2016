@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerScript : MonoBehaviour {
 
     private float _damageModifier = 5;
-    private float _speedModifier = 100;
+    private float _speedModifier = 250;
     private float _armourModifier = 100;
     private float _hpRegenModifier = 5;
 
