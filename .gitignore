@@ -46,6 +46,7 @@ obj/
 *.user
 *.unityproj
 *.booproj
+*.unity
 
 # ============ #
 # OS generated #

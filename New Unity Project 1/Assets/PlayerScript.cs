@@ -10,7 +10,7 @@ public class PlayerScript : MonoBehaviour {
 
     public bool freezeControls; //For Liam, cos he's weird
 
-    private float _health = 100f;
+    private float _health = 100;
     private float _damage = 5f;
     private float _speed = 25f;
 
@@ -39,7 +39,7 @@ public class PlayerScript : MonoBehaviour {
         {
             if (collider.IsTouching(e.GetComponent<Collider2D>())&&Input.GetButtonDown("Fire1"))
             {
-                e.GetComponent<AIScript>().TakeDamage(damageModifier * _damage);
+                //e.GetComponent<AIScript>().TakeDamage(damageModifier * _damage);
             }
         }
     }
