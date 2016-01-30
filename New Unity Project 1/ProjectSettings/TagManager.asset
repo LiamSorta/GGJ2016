@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bg
+  - Gate
   layers:
   - Default
   - TransparentFX
@@ -38,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 755986251
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

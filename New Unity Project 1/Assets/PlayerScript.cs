@@ -3,10 +3,10 @@ using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
 
-    private float _damageModifier = 1f;
-    private float _speedModifier = 1f;
-    private float _armourModifier = 1f;
-    private float _hpRegenModifier = 1f;
+    private float _damageModifier = 5;
+    private float _speedModifier = 250;
+    private float _armourModifier = 100;
+    private float _hpRegenModifier = 5;
 
     public bool freezeControls; //For Liam, cos he's weird
 
@@ -27,7 +27,6 @@ public class PlayerScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
         rigidbody = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
 	}
@@ -57,17 +56,9 @@ public class PlayerScript : MonoBehaviour {
 
     private void Movement()
     {
-        if (!freezeControls) //When freezeControls is true do not allow controls
-        {
-            rigidbody.velocity = Vector2.zero;
-            Vector2 movement = new Vector2(Input.GetAxisRaw("Horizontal") * _speed * speedModifier * Time.deltaTime, Input.GetAxisRaw("Vertical") * _speed * speedModifier * Time.deltaTime);
-            rigidbody.velocity = movement;
-        }
-    }
-
-    public void TakeDamage(float damage)
-    {
-        _health -= damage * armourModifier;
+        rigidbody.velocity = Vector2.zero;
+        Vector2 movement= new Vector2(Input.GetAxisRaw("Horizontal") * speedModifier * Time.deltaTime, Input.GetAxisRaw("Vertical") * speedModifier * Time.deltaTime);
+        rigidbody.velocity = movement;
     }
 
 
