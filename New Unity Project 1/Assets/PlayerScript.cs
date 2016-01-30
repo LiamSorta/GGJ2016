@@ -3,10 +3,10 @@ using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
 
-    private float _damageModifier;
-    private float _speedModifier;
-    private float _armourModifier;
-    private float _hpRegenModifier;
+    private float _damageModifier = 5;
+    private float _speedModifier = 100;
+    private float _armourModifier = 100;
+    private float _hpRegenModifier = 5;
 
     private float _health;
 
