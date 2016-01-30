@@ -39,8 +39,6 @@ public class Gate : MonoBehaviour {
             }
 
         }
-
-        Debug.Log(bgTransform.gameObject.name);
         return bgTransform;
     }
 }

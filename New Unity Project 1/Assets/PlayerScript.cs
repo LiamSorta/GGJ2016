@@ -31,17 +31,17 @@ public class PlayerScript : MonoBehaviour {
         collider = GetComponent<Collider2D>();
 	}
 	
-    void Update()
-    {
-        GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject e in allEnemies)
-        {
-            if (collider.IsTouching(e.GetComponent<Collider2D>())&&Input.GetButtonDown("Fire1"))
-            {
-                //e.GetComponent<AIScript>().TakeDamage(damageModifier * _damage);
-            }
-        }
-    }
+    //void Update()
+    //{
+    //    GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+    //    foreach (GameObject e in allEnemies)
+    //    {
+    //        if (collider.IsTouching(e.GetComponent<Collider2D>())&&Input.GetButtonDown("Fire1"))
+    //        {
+    //            //e.GetComponent<AIScript>().TakeDamage(damageModifier * _damage);
+    //        }
+    //    }
+    //}
 
 	// Update is called once per frame
 	void FixedUpdate () {
