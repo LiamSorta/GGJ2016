@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Level1)
+	    /*if (Level1)
         {
             maxEnemies = 5;
         }
@@ -44,6 +44,6 @@ public class EnemySpawner : MonoBehaviour {
                     stats.SetStats(1f, 1f, 1f, 1f, Color.white, false);
                     break;
             }
-        }
+        }*/
 	}
 }

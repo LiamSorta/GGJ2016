@@ -6,7 +6,7 @@ public class PlayerScript : MonoBehaviour {
     private float _damageModifier = 1;
     private float _speedModifier = 1;
     private float _armourModifier = 1;
-    private float _hpRegenModifier = 1;
+    private float _hpRegenModifier = .1f;
 
     public bool freezeControls; //For Liam, cos he's weird
 
@@ -23,6 +23,8 @@ public class PlayerScript : MonoBehaviour {
 
     Rigidbody2D rigidbody;
     Collider2D collider;
+    float timer = -50;
+    float attackDelay = .25f;
 
 
 	// Use this for initialization
@@ -33,14 +35,15 @@ public class PlayerScript : MonoBehaviour {
 	
     void Update()
     {
-        /*GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject e in allEnemies)
         {
-            if (collider.IsTouching(e.GetComponent<Collider2D>())&&Input.GetButtonDown("Fire1"))
+            if (collider.IsTouching(e.GetComponent<Collider2D>())&&Input.GetButtonDown("Fire1")&&timer + attackDelay < Time.time)
             {
-                //e.GetComponent<AIScript>().TakeDamage(damageModifier * _damage);
+                timer = Time.time;
+                e.GetComponent<AIScript>().TakeDamage(damageModifier * _damage);
             }
-        }*/
+        }
     }
 
 	// Update is called once per frame
@@ -65,6 +68,5 @@ public class PlayerScript : MonoBehaviour {
         Vector2 movement= new Vector2(Input.GetAxisRaw("Horizontal") * speedModifier * Time.deltaTime, Input.GetAxisRaw("Vertical") * speedModifier * Time.deltaTime);
         rigidbody.velocity = movement;
     }
-
 
 }
